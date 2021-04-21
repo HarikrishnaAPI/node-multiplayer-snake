@@ -4,11 +4,6 @@ node ('master'){
         /* Let's make sure we have the repository cloned to our workspace */
        checkout scm
     }  
-    stage('SAST'){
-        build 'SECURITY-SAST-SNYK'
-    }
-
-    
     stage('Build-and-Tag') {
         sh 'echo Build-and-Tag'
     /* This builds the actual image; synonymous to
@@ -21,12 +16,7 @@ node ('master'){
      /*docker.withRegistry('https://registry.hub.docker.com', 'training_creds') {
             app.push("latest")*/
         			}
-         }
-    stage('SECURITY-IMAGE-SCANNER'){
-        build 'SECURITY-IMAGE-SCANNER-AQUAMICROSCANNER'
-    }
-  
-    
+         }    
     stage('Pull-image-server') {
         sh 'echo Pull-image-server'
     
