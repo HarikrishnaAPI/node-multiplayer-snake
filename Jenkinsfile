@@ -1,4 +1,6 @@
-node ('master'){  
+pipeline{
+    agent any
+    stages{
     //def app
     stage('Cloning Git') {
         /* Let's make sure we have the repository cloned to our workspace */
@@ -23,4 +25,5 @@ node ('master'){
         /* sh "docker-compose down"
          sh "docker-compose up -d"	*/
       } 
+}
 }
